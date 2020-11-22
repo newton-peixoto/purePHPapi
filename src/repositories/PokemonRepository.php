@@ -53,18 +53,13 @@ class PokemonRepository {
 
     private function validateRequest($request, $method) {
         $valid = ['type', 'name'];
-        if($method == 'PUT' ) {
-            $valid = ['type', 'name', 'id'];
-        }else if (  $method == "DELETE" ) {
-            $valid = ['id'];
-        }
-
-       foreach($request as $key => $field) {
-            if(!in_array($key, $valid)) {
-                echo json_encode( ['success' => false, 'data' => 'Field ' . $key .' is missing!'] );
+        
+        foreach($valid as $required) {
+            if(!in_array($required, array_keys($request))) {
+                echo json_encode( ['success' => false, 'data' => 'Field ' . $required .' is missing!'] );
                 exit();
             }
-       } 
+        }
 
        return true;
     }
