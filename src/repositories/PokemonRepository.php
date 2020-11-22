@@ -15,7 +15,9 @@ class PokemonRepository
 
     public function create(object $request)
     {
-        $this->validateRequest($request->global, $request->method);
+        if(!$this->validateRequest($request->global, $request->method)){
+            return;
+        }
         $newPokemon = ['type' => $request->global['type'], 'name' => $request->global['name']];
         $this->dataBase->add($newPokemon);
         $this->printJson(true, $this->dataBase->getData());
@@ -40,7 +42,10 @@ class PokemonRepository
     public function update(object $request)
     {
 
-        $this->validateRequest($request->global, $request->method);
+        if(!$this->validateRequest($request->global, $request->method)){
+            return;
+        }
+        
         $pokeArray = $this->dataBase->getData();
         $key = $this->dataBase->getJsonId($request->id);
        
@@ -63,7 +68,7 @@ class PokemonRepository
         foreach ($valid as $required) {
             if (!in_array($required, array_keys($request))) {
                 $this->printJson(false, 'Field ' . $required . ' is missing!');
-                exit();
+                return false;
             }
         }
 
