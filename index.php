@@ -39,7 +39,7 @@ $routes = [
 $_POST = json_decode(file_get_contents('php://input'), true);
 
 $request['global'] = in_array($method, ['POST', 'PUT']) ? $_POST : $_GET;
-$request['id']     = $id;
+$request['id']     = empty($id) ? null : $id;
 $request['method'] = $method;
 
 
