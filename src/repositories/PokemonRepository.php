@@ -63,7 +63,7 @@ class PokemonRepository
         foreach ($valid as $required) {
             if (!in_array($required, array_keys($request))) {
                 $this->printJson(false, 'Field ' . $required . ' is missing!');
-                return false;
+                exit();
             }
         }
 
