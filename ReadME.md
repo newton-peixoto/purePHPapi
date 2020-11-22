@@ -1,6 +1,6 @@
 # REST API example application
 
-This is a pure PHP api to store pokemons. database is based on a json file. This idea came from a youtube [Video](https://www.youtube.com/watch?v=NxHY14rMPvc)
+This is a pure PHP api to store pokemons. The database is based on a json file. This idea came from a youtube [video](https://www.youtube.com/watch?v=NxHY14rMPvc)
 
 ## Install
 
