@@ -8,8 +8,8 @@ This is a pure PHP api to store pokemons. database is based on a json file. This
 
     cd purePHPapi
 
-    composer install 
-    
+    composer dump-autoload
+
     php -S localhost:8000 
 
 
